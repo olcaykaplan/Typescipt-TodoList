@@ -1,0 +1,36 @@
+.card{
+    text-align: center;
+    background-color: white;
+    border: #dfebec 3px solid;
+    border-radius: 3%;
+    box-shadow: 2px 3px 5px grey;
+    height: 300px;
+    width: 20%;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin: 60px 0 0 120px;
+}
+
+.title{
+    margin-bottom: 15px;
+    height: 15%;
+}
+.content{
+    margin-bottom: 15px;
+    height: 70%;
+}
+.text{
+    margin-bottom: 15px;
+    text-align: left;
+    height: 85%;
+}
+.date{
+    text-align: right;
+    font-style: italic;
+
+}
+.operations{
+    margin-bottom: 15px;
+}

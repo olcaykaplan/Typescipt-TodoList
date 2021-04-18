@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {FC, ChangeEvent ,useState} from 'react';
 import './App.css';
+import {ITask} from './Interfaces'
+import TodoList from "./Components/TodoList";
+import classes from "./Components/TodoList/Task/index.module.css";
+const  App: FC = () => {
 
-function App() {
+  const [task, setTask] = useState<ITask>({
+    taskName:"",
+    taskDescription:"",
+    taskDate: (new Date).toString(),
+  })
+  const [todoList, setTodoList] = useState<ITask[]>([]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>):void => {
+    setTask({...task, [e.target.name] : e.target.value})
+  }
+  const handleClick = (): void => {
+    const newTask = {taskName: task.taskName, taskDescription: task.taskDescription, taskDate: task.taskDate}
+    setTodoList([...todoList, newTask] )
+    setTask({taskName:"", taskDescription:"", taskDate:(new Date()).toString()})
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <div className="header">
+          <input type="text"  placeholder="task..." value={task.taskName} name="taskName" onChange={handleChange}/>
+          <input type="text" placeholder="decription" value={task.taskDescription} name="taskDescription" onChange={handleChange}/>
+          <input type="date" placeholder="End Date"  name="taskDate" onChange={handleChange}/>
+          <button onClick={handleClick}>Add Task</button>
+        </div>
+        <TodoList todoList={todoList} />
+      </div>
   );
 }
 

@@ -1,0 +1,6 @@
+.todoList{
+  flex:70%;
+  width: 100%;
+  background-color: #dfebec;
+  float: left;
+}
